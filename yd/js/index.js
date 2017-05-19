@@ -149,12 +149,6 @@ function gonggao(gao,zuo,you) {
 
 
 //banner下边轮播
-
-
-
-
-
-
 rolling(".gundong", ".lunbo", ".lunbo_kuang", ".left", ".right");
 function rolling(Banner, Img, A, Left, Right) {
     var banner = $(Banner)[0];
@@ -290,55 +284,7 @@ prev.onclick=function(){
 }
 lunbo();
 
-function lb(){
-var banner=document.querySelector(".gundong");
-var box=document.querySelector(".lunbo");
-var prev=document.querySelector(".left");
-var next=document.querySelector(".right");
-var t=setInterval(move,5000);
-var num=4;
-let flag=true;
-function move() {
-    box.style.transition="all 1s";
-    num++;
-    box.style.marginLeft=-num*295+"px";
-}
-//    给box过渡结束事件
-box.addEventListener("transitionend",function(){
-//        当num=12时 让box返回到 初始的位置 num=4 marginLeft变为4*295
-    if(num==12){
-        box.style.transition="none";
-        num=4;
-        box.style.marginLeft=-num*295+"px";
-    }
-    if(num==0){
-        box.style.transition="none";
-        num=8;
-        box.style.marginLeft=-num*295+"px";
-    }
-    flag=true;
-})
-banner.onmouseover=function(){
-    clearInterval(t);
-}
-banner.onmouseout=function(){
-    t=setInterval(move,1000);
-}
-next.onclick=function () {
-    if(flag){
-        flag=false;
-        move();
-    }
-}
-prev.onclick=function () {
-    if(flag){
-        flag=false;
-        num-=2;
-        move();
-    }
-}
-}
-lb();
+
 
 
  
