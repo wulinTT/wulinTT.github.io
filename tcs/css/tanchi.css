@@ -1,0 +1,164 @@
+*{
+    	padding: 0;
+    	margin: 0;
+    	list-style: none;
+}
+
+    /*消除滚动条*/
+html body{     
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.sence{
+    width: 600px;
+    height: 600px;
+    border: 1px solid #fff;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    }
+.gezi{
+	width: 30px;
+	height: 30px;
+	background-color: #d3ffd1;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	box-sizing:border-box;
+	float: left;
+}
+.gezi:nth-child(20n){
+	border-right: 0;
+}
+.gezi:nth-child(380)~.gezi{
+	border-bottom: 0;
+}
+
+.she{
+	background: #ff8477;
+}
+.food{
+	border-radius: 50%;
+	/*background: #b776ff;*/
+	background-image: url("../img/a.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100%,100%;
+}
+/*.superfood{*/
+	/*background: red;*/
+/*}*/
+.kaishi{
+	width: 600px;
+	height: 600px;
+	/*background: #b776ff;*/background-image: url("../img/timg.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100%,100%;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	z-index: 20;
+	color: #fff;
+	font-size: 50px;
+	text-align: center;
+	font-family: "Arial Black";
+	border-radius: 10px;
+	padding-top: 80px;
+	box-sizing:border-box;
+}
+.kaishi_title{
+	width: 200px;
+	height: 60px;
+	background: #ffee62;
+	margin: 0 auto;
+	font-size: 26px;
+	color: #fff;
+	line-height: 60px;
+	text-align: center;
+	margin-top: 260px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.controls{
+	width: 200px;
+	height: 600px;
+	position: absolute;
+	top: 0;
+	right: 180px;
+	background: #ffee62;
+	display: none;
+}
+.score{
+	width: 180px;
+	height: 150px;
+	/*border: 1px solid #000;*/
+	margin: 0 auto;
+	border-radius: 10px;
+	margin-top: 20px;
+	background: #ff8477;
+}
+.zuigaofen, .defen{
+	width: 100%;
+	height: 60px;
+	margin: 10px auto;
+	padding-left: 15px;
+	line-height: 40px;
+	font-size: 16px;
+	color: #fff;
+}
+.score .zuigaofen span,.score .defen span{
+	color: #fff;
+}
+.over{
+	width: 600px;
+	height: 600px;
+	background: rgba(78,78,78,0.7);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	z-index: 10;
+	line-height: 260px;
+	text-align: center;
+	font-size: 60px;
+	color: #fff;
+	display: none;
+	font-family: Arial;
+}
+.tu{
+	width: 150px;
+	height: 150px;
+	border-radius: 20px;
+	background-image: url("../img/a.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100%,100%;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.restart, .pause{
+	width: 180px;
+	height: 40px;
+	border-radius: 10px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 14px;
+	color: #fff;
+	margin: 0 auto;
+	margin-top: 30px;
+	background: #ff8477;
+	cursor: pointer;
+}

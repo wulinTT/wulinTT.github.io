@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打字游戏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            user-select: none;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .sence {
+            width: 100%;
+            height: 100%;
+            /*background: #ccc;*/
+            margin: 0 auto;
+            background-image: url(img/bg.png);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .main {
+            width: 80%;
+            height: 100%;
+            float: left;
+            /*background: #5fffc6;*/
+            position: relative;
+        }
+
+        .control {
+            width: 20%;
+            height: 100%;
+            /*background: #b776ff;*/
+            float: left;
+
+        }
+
+        .box {
+            width: 80%;
+            height: 70px;
+            background-image: url(img/scor.png);
+            background-size: 100% 100%;
+            background-position: center;
+            border-radius: 10px;
+            margin: 0 auto;
+            /*background: #ff5053;*/
+            margin-bottom: 20px;
+            /*border: 1px solid #000;*/
+        }
+
+        .boxL {
+            background-image: url(img/life.png);
+            background-size: 100% 100%;
+            background-position: center;
+        }
+
+        .scor, .state, .life {
+            width: 100%;
+            height: 70px;
+            /*background: #644520;*/
+            margin: 0 auto;
+            text-align: center;
+            line-height: 90px;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .lifeL {
+            color: #0a0a0a;
+        }
+
+        .letter {
+            width: 80px;
+            height: 80px;
+            /*border: 1px solid red;*/
+            text-align: center;
+            line-height: 80px;
+            font-size: 30px;
+            color: #000;
+            font-weight: bold;
+            position: absolute;
+            background-size: cover;
+        }
+        @keyframes move{
+            0%{
+                transform:translateX(0);
+            }
+            25%{
+                transform:translateX(-30px);
+            }
+            50%{
+                transform:translateX(0px);
+            }
+            75%{
+                transform:translateX(30px);
+            }
+            100%{
+                transform:translateX(0);
+            }
+        }
+        .start_jiemian{
+            width:100%;
+            height: 100%;
+            position: absolute;
+            top:0;
+            left:0;
+            background-image: url(img/bg.png);
+            background-size: cover;
+            background-position: center;
+            z-index:1000;
+        }
+        .startK {
+            width: 600px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 50%;
+            margin-top: -200px;
+            background-image: url(img/logo.png);
+            background-size: 100% 100%;
+            background-position: center;
+            display: block;
+            animation:move 3s linear infinite;
+        }
+
+        .start {
+            width: 240px;
+            height: 100px;
+            position: absolute;
+            right: 20px;
+            top: 230px;
+            background-image: url(img/start.png);
+            background-size: 100% 100%;
+            background-position: center;
+
+        }
+        .start:hover{
+            transform:scale(1.1,1.1);
+            transition:all 0.5s;
+        }
+        .difficult{
+            width: 240px;
+            height: 100px;
+            position: absolute;
+            left: 20px;
+            top: 230px;
+            background-image: url(img/choose.png);
+            background-size: 100% 100%;
+            background-position: center;
+        }
+        .difficult:hover{
+            transform:scale(1.1,1.1);
+            transition:all 0.5s;
+        }
+        @keyframes rotate{
+            0%{
+                transform:rotate(0deg);
+            }
+            100%{
+                transform:rotate(360deg);
+            }
+        }
+        .pause {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-top: 30px;
+            background-image: url(img/stop.png);
+            background-size: 100% 100%;
+            background-position: center;
+            float: left;
+            margin-left: 80px;
+
+        }
+        .title{
+            width:60px;
+            height:60px;
+            border-radius: 50%;
+            background: #ffab09;
+            margin-top: 35px;
+            float: right;
+            margin-right: 40px;
+            color: #fff;
+            text-align: center;
+            line-height: 60px;
+            font-size: 12px;
+            cursor: pointer;
+            border: 1px solid #C78943;
+            z-index: 1000;
+            /*display: none;*/
+        }
+
+
+        .zhezhao1 {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .stopbox {
+            width: 500px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 50%;
+            margin-top: -200px;
+            background-image: url(img/stopbox.png);
+            background-size: 100% 100%;
+            background-position: center;
+
+
+        }
+
+        .continue {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 40px;
+            left: 90px;
+            background-image: url(img/continue.png);
+            background-size: 100% 100%;
+            background-position: center;
+        }
+
+        .back {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 40px;
+            right: 90px;
+            background-image: url(img/back.png);
+            background-size: 100% 100%;
+            background-position: center;
+            cursor: pointer;
+        }
+        .back1{
+            left:0;
+            right: 0;
+            margin: auto;
+            bottom: -35px;
+        }
+
+        .zhezhao2 {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            z-index:100;
+        }
+        .overBox{
+            width:500px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 50%;
+            margin-top: -200px;
+            background-image: url(img/over.png);
+            background-size: 100% 100%;
+            background-position: center;
+            /*display: none;*/
+        }
+        .scors{
+            width:70px;
+            height:40px;
+            /*background:red;*/
+            position: absolute;
+            top:100px;
+            left:290px;
+            list-style:40px;
+            color: #000;
+            font-size: 30px;
+            text-align: center;
+        }
+        .bestScors{
+            width:70px;
+            height:40px;
+            position: absolute;
+            top:140px;
+            left:290px;
+            list-style:40px;
+            color: #000;
+            font-size: 30px;
+            text-align: center;
+        }
+        .restart{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 40px;
+            left: 90px;
+            background-image: url(img/restart.png);
+            background-size: 100% 100%;  background-position: center;
+        }
+        .restart1{
+            left: 210px;
+        }
+
+        .phb{
+            width:450px;
+            height:400px;
+            /*background: #ff5053;*/
+            background-image: url(img/paihang.png);
+            background-size: 100% 100%;  background-position: center;
+            position: absolute;
+            top:0;
+            left:0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            z-index:90;
+            display: none;
+        }
+
+
+        table {
+            width: 100%;
+            height: 260px;
+            margin-top: 120px;
+            z-index: 10000;
+            /*display: none;*/
+        }
+        th, td {
+            width: 160px;
+            height: 50px;
+            color: #433;
+            font-size: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        tbody{
+            width: 100%;
+            height: 190px;
+        }
+        .choose{
+            width:620px;
+            height:300px;
+            position: absolute;
+            left: 0;
+            right:0;
+            margin: auto;
+            top:50%;
+            margin-top: -200px;
+            background-image: url(img/difficult.png);
+            background-size: 100% 100%;
+            background-position: center;
+            display: none;
+            z-index:1000;
+            /*background: #ff5053;*/
+        }
+        .easy{
+            display: block;
+            width:180px;
+            height:60px;
+            position: absolute;
+            top:160px;
+            left:20px;
+            background-image: url(img/easy.png);
+            background-size: 100% 100%;
+            background-position: center;
+
+        }
+        .medium{
+            display: block;
+            width:180px;
+            height:60px;
+            position: absolute;
+            top:160px;
+            left:220px;
+            background-image: url(img/medium.png);
+            background-size: 100% 100%;
+            background-position: center;
+            border:2px solid #ff5053;
+        }
+        .hard{
+            display: block;
+            width:180px;
+            height:60px;
+            position: absolute;
+            top:160px;
+            right:10px;
+            background-image: url(img/hard.png);
+            background-size: 100% 100%;
+            background-position: center;
+        }
+        .easy:hover{
+            transform:scale(1.1,1.1);
+            transition:all 0.5s linear;
+        }
+        .medium:hover{
+            transform:scale(1.1,1.1);
+            transition:all 0.5s linear;
+        }
+        .hard:hover{
+            transform:scale(1.1,1.1);
+            transition:all 0.5s linear;
+        }
+    </style>
+</head>
+<body>
+<div class="sence">
+    <div class="main"></div>
+    <div class="control">
+        <div class="box ">
+            <div class="scor">0</div>
+        </div>
+        <div class="box">
+            <div class="state">1</div>
+        </div>
+        <div class="box boxL">
+            <div class="life lifeL">5</div>
+        </div>
+        <div class="pause"></div>
+        <div class="title">排行榜</div>
+    </div>
+
+
+    <!-- 暂停弹出的窗口 -->
+    <div class="zhezhao1">
+        <div class="stopbox">
+            <div class="continue"></div>
+            <div class="restart restart1"></div>
+            <div class="back"></div>
+        </div>
+    </div>
+
+    <!-- 开始界面 -->
+    <div class="start_jiemian">
+        <div class="startK">
+            <div class="start"></div>
+            <div class="difficult"></div>
+        </div>
+        <!--游戏难度-->
+        <div class="choose">
+            <li class="easy"></li>
+            <li class="medium"></li>
+            <li class="hard"></li>
+            <div class="back back1"></div>
+        </div>
+    </div>
+
+    <!-- 游戏结束 -->
+    <div class="zhezhao2">
+        <div class="overBox">
+            <div class="scors"></div>
+            <div class="bestScors"></div>
+            <div class="back"></div>
+            <div class="restart"></div>
+        </div>
+    </div>
+
+    //排行榜
+    <div class="phb">
+        <table>
+            <thead>
+            <tr>
+                <th>名次</th>
+                <th>昵称</th>
+                <th>成绩</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+<script>
+
+    //面向过程
+//        var main=document.querySelector(".main");
+//        var num=3;
+//        var obj={}    //对象
+//        function createLetter(){
+//            var div=document.createElement("div");   //创建（"标签名"）
+//            div.className="letter";   //类名
+//            do{
+//                var rn=Math.floor(Math.random()*26+65);   //ASCII码
+//                var le=String.fromCharCode(rn);   //将数字转换为字母
+//            }while(obj[le])
+//    //        obj[le]=true;
+//            div.innerHTML=le;
+//            do {
+//                var rl = Math.random() * 720;
+//                var rt=-Math.random()*100;
+//            }while(check(rl))
+//            div.style.left=rl+"px";
+//
+//            div.style.top=rt+"px";
+//            obj[le]={left:rl,top:rt,el:div};
+//            main.appendChild(div);
+//        }
+//        function play(){
+//            for(var i=0;i<num;i++){
+//                createLetter();
+//            }
+//        }
+//
+//        function check(left){
+//            for(var i in obj){
+//                if(obj[i].left-80<left&&left<obj[i].left+80){
+//                    return true;
+//                }
+//            }
+//        }
+//        play();
+//        setInterval(function(){
+//            for(var i in obj){
+//                var t=obj[i].top;
+//                t+=5;
+//                obj[i].top=t;
+//                obj[i].el.style.top=t+"px";
+//            }
+//        },50)
+//        document.onkeydown=function(e){
+//            var keycode=e.keyCode;
+//            var l=String.fromCharCode(keycode);
+//            if(obj[l]){
+//                main.removeChild(obj[l].el);
+//                delete obj[l];  //删除属性
+//                createLetter();
+//            }
+//        }
+//
+
+
+    //面向对象
+    var main = document.querySelector(".main");
+    var start = document.querySelector(".start");
+    var scor = document.querySelector(".scor");
+    var state = document.querySelector(".state");
+    var life = document.querySelector(".life");
+    var pause = document.querySelector(".pause");
+    var startJ = document.querySelector(".start_jiemian");
+    var zhezhao1 = document.querySelector(".zhezhao1");
+    var stopbox = document.querySelector(".stopbox");
+    var jixu = document.querySelector(".continue");
+    var backs = document.querySelectorAll(".back");
+    var best = document.querySelector(".bestScors");
+    var defen = document.querySelector(".scors");
+    var restarts = document.querySelectorAll(".restart");
+    var zhezhao2 = document.querySelector(".zhezhao2");
+    var title = document.querySelector(".title");
+    var phb = document.querySelector(".phb");
+    var choose = document.querySelector(".choose");
+    var li = document.querySelectorAll(".choose li");
+    var easy = document.querySelector(".easy");
+    var medium = document.querySelector(".medium");
+    var hard = document.querySelector(".hard");
+    var startK= document.querySelector(".startK");
+    var difficult= document.querySelector(".difficult");
+    var tbody= document.querySelector("tbody");
+
+    class Game {
+        constructor(main, scor, state, life, startJ, best, zhezhao2,defen,title,tbody,phb) {
+            this.main = main;
+            this.scorele = scor;   //接收一下传进来的参数
+            this.scor = 0;
+            this.num = 2;
+            this.obj = {};   //创建一个空对象，json格式
+            this.stateele = state;
+            this.state = 1;    //用属性保存起来
+            this.speed = 5;
+            this.lifeele = life;
+            this.life = 5;
+            this.height = window.innerHeight;
+            this.startControl = true;
+            this.st = null;
+            this.startele = startJ;
+            this.backele=backs;
+            this.bestele=best;
+            this.zhezhao2=zhezhao2;
+            this.defenele=defen;
+            this.title=title;
+            this.tbody=tbody;
+            this.phb=phb;
+            this.phb_flag=false;
+
+        }
+
+        _createLetter() {
+            var CW=document.documentElement.clientWidth;
+//            console.log(CW);
+            var mainW=CW*4/5;
+//            console.log(mainW)
+            var div = document.createElement("div");
+            div.className = "letter";
+            do {   //判断随机生成的字母是否重复
+                var rn = Math.floor(Math.random() * 26 + 65);
+                var le = String.fromCharCode(rn);
+            } while (this.obj[le]); //取值
+//            console.log(this.obj[le]);   //undefined,为假，第一次判断时，不执行while循环语句，执行下边代码
+            // console.log(typeof this.obj[le])   //object
+            div.style.backgroundImage = `url(img/${le}.png)`;
+            do {
+                var rl = Math.random() * mainW;
+            } while (this._check(rl))
+            div.style.left = rl + "px";
+            var rt = -Math.random() * 100;
+            div.style.top = rt + "px";
+            this.obj[le] = {left: rl, top: rt, el: div};
+            this.main.appendChild(div);
+        }
+
+        _check(left) {
+            for (var i in this.obj) {
+                if (this.obj[i].left - 80 < left && left < this.obj[i].left + 80) {
+                    return true;
+                }
+            }
+        }
+
+        start() {
+//            alert(this.num)
+            for (var i = 0; i < this.num; i++) {
+
+                this._createLetter();
+
+            }
+            this._move();
+            this._keydown();
+            this.statrControl = false;
+            this.bestscor=localStorage.bestscor?JSON.parse(localStorage.bestscor):[];
+            this.title.style.display="block";
+            this._phb();
+            this.phb_flag=true;
+        }
+
+        _move() {
+            this.st = setInterval(function () {
+                for (var i in this.obj) {   //this指实例化的game对象，因为start()方法调用了_move()方法，game对象调用了start()方法
+                    var t = this.obj[i].top;
+                    t += 5;
+                    this.obj[i].top = t;
+                    this.obj[i].el.style.top = t + "px";
+                    if (t > this.height) {
+                        this.life--;
+                        this.lifeele.innerHTML = this.life;
+                        this.main.removeChild(this.obj[i].el);
+                        delete this.obj[i];
+                        if (this.life == 0) {
+                            this._gameover();
+                            return;
+                        }
+                        this._createLetter();
+                    }
+                }
+            }.bind(this), 50)
+        }
+
+
+
+        _keydown() {
+            document.onkeydown = function (e) {
+                var keycode = e.keyCode;
+                var l = String.fromCharCode(keycode);
+                if (this.obj[l]) {
+                    this.main.removeChild(this.obj[l].el);  //删掉元素对象
+                    delete this.obj[l];  //删除属性
+                    this.scor++;
+                    this.scorele.innerHTML = this.scor;
+                    if (this.scor % 5 == 0) {
+                        this._upstate();
+                    }
+                    this._createLetter();
+                }
+
+            }.bind(this)
+        }
+
+        _upstate() {
+            this.state++;
+            this.stateele.innerHTML = this.state;
+            if (this.state <= 3) {
+//                this.num++;     //不起作用，因为一开始start方法被调用for循环就执行完了
+                this._createLetter();
+            } else {
+                this.speed++;
+            }
+        }
+
+        _gameover() {
+            alert(`当前得分为${this.scor}`);
+            if(this.bestscor.length<3||(this.bestscor.length>=3&&this.scor>this.bestscor[2].scor)){
+                var player=prompt("请输入姓名");
+                this.bestscor.push({player,scor:this.scor});
+                this.bestscor.sort(function(a,b){   //排序，从大到小排
+                    if(a.scor>b.scor){
+                        return -1;
+                    }else{
+                        return 1;
+                    }
+                });
+                if(this.bestscor.length>3){
+                    this.bestscor.pop();
+                }
+                localStorage.bestscor=JSON.stringify(this.bestscor);
+
+                //游戏结束显示得分情况
+                this.defenele.innerHTML=this.scor;
+                this.bestele.innerHTML=this.bestscor[0].scor;
+                
+            }
+            this.main.innerHTML = "";
+            this.obj = {};
+            this.stateele.innerHTML = 1;
+            this.speed = 5;
+            this.scor = 0;
+            this.scorele.innerHTML = 0;
+            this.life = 5;
+            this.startControl = true;
+            clearInterval(this.st);
+            this.zhezhao2.style.display="block";
+            this.zhezhao2.style.zIndex=80;
+            this.title.style.display="block";
+            this.phb.style.display="none";
+        }
+        //排行榜信息
+        _phb(){
+            if(!this.phb_flag){
+                var bestdata=localStorage.bestscor?JSON.parse(localStorage.bestscor):[];
+                bestdata.forEach(function(v,i){
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = `<td>${i + 1}</td><td>${bestdata[i].player}</td><td>${bestdata[i].scor}</td>`;
+                    tbody.appendChild(tr);
+                })
+            }
+
+        }
+        back(){
+            this.main.innerHTML = "";
+            this.obj = {};
+            this.stateele.innerHTML = 1;
+            this.speed = 5;
+            this.scor = 0;
+            this.scorele.innerHTML = 0;
+            this.life = 5;
+            this.startControl = true;
+            clearInterval(this.st);
+        }
+        pause() {
+            clearInterval(this.st);
+            document.onkeydown = null;
+        }
+
+        play() {
+            this._move();
+            this._keydown();
+        }
+
+    }
+
+    //点击选择游戏难度
+    difficult.onclick=function(){
+//        startJ.style.display="none";
+        startK.style.display="none";
+        choose.style.display="block";
+    }
+
+    //选择简单
+
+    easy.onclick=function(){
+        game.num=2;
+        game.speed=5;
+        choose.style.display="none";
+        startK.style.display="block";
+    }
+
+    //选择中等难度
+    medium.onclick=function(){
+        game.num=3;
+        game.speed=6;
+        choose.style.display="none";
+        startK.style.display="block";
+    }
+
+    //选择难度较大
+    hard.onclick=function(){
+        game.num=4;
+        game.speed=7;
+        choose.style.display="none";
+        startK.style.display="block";
+    }
+    //点击开始游戏
+    var startControl = true;
+    start.onclick = function () {
+        if (startControl) {
+            game.start();
+            startJ.style.display = "none";
+        }
+    }
+    //点击暂停
+    var flag = true;
+    pause.onclick = function () {
+        if (flag) {
+            zhezhao1.style.display = "block";
+            phb.style.display="none";
+            game.pause();
+        }
+        flag = !flag;
+    }
+
+
+    //点击继续
+    jixu.onclick = function () {
+        game.play();
+        zhezhao1.style.display = "none";
+    }
+
+    //点击返回
+    backs.forEach(function(back){
+        back.onclick=function(){
+            startJ.style.display="block";
+            zhezhao1.style.display="none";
+            zhezhao2.style.display="none";
+            if(start.onclick){
+                if (startControl) {
+                    game.start();
+                }
+            }else if(difficult.onclick){
+                startK.style.display="none";
+                choose.style.display="block";
+            }
+            game.back();
+        }
+    })
+
+    //点击重新开始
+    restarts.forEach(function(restart){
+        restart.onclick=function(){
+            game.back();
+            game.start();
+            startJ.style.display = "none";
+            zhezhao1.style.display="none";
+            zhezhao2.style.display="none";
+//            title.style.display="none";
+            phb.style.display="none";
+
+        }
+    })
+
+    //点击排行榜
+    var phbflag=true;
+    title.onclick=function(){
+        if(phbflag){
+            phbflag=false;
+            phb.style.display="block";
+        }
+    }
+
+    //实例化对象
+    var game = new Game(main, scor, state, life, startJ,best,zhezhao2,defen,title,tbody,phb);
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            user-select:none;
+        }
+        html,body{
+           width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .sence{
+            width: 100%;
+            height:100%;
+            border:1px solid red;
+            perspective:500px;
+
+            position: relative;
+        }
+        .box{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /*transition:transform 10s;*/
+            transform-style:preserve-3d;
+        }
+        .sence:hover ul{
+            transform:rotate3D(1,1,0,360deg);
+        }
+        .box li{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: visible;
+        }
+        .box li:nth-child(1){
+            background: #ffee62;
+            transform-origin:top;
+            transform: rotateX(90deg);
+        }
+        .box li:nth-child(2){
+            /*background: #84ffd8;*/
+            background-image: url(image/7.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 100% 100%;
+            background-clip:border-box;
+            background-origin: border-box;
+            transform-origin:left;
+            transform: rotateY(-90deg);
+        }
+        .box li:nth-child(3){
+            background: #37ff65;
+            transform-origin:bottom;
+            transform: rotateX(-90deg);
+        }
+        .box li:nth-child(4){
+            background: #ffa2fc;
+            transform-origin:right;
+            transform: rotateY(90deg);
+        }
+        .box li:nth-child(5){
+            background: #ff8477;
+            transform: translateZ(500px);
+        }
+        .box li:nth-child(6){
+            background: #d3ffd1;
+        }
+    </style>
+</head>
+<body>
+    <div class="sence">
+        <ul class="box">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li><div class="container">
+                <video>
+                    <source src="1.mp4">
+                </video>
+                <div class="controls">
+                    <div class="start icon">
+                        &#xe61f;
+                    </div>
+                    <div class="reload icon">
+                        &#xe647;
+                    </div>
+                    <div class="progress">
+                        <div class="inner">
+
+                        </div>
+                    </div>
+                    <div class="time">
+                        <span id="now">00:00</span>
+                        <b>/</b>
+                        <span id="all">00:00</span>
+                    </div>
+                    <div class="volume">
+                        <span class="icon">&#xe62a;</span>
+                        <div class="bg">
+                            <div class="vol">
+                                <div class="volinner"></div>
+                            </div>
+                            <div class="mask"></div>
+                        </div>
+                    </div>
+                    <div class="fullscreen icon">&#xe616;</div>
+                </div>
+
+            </div></li>
+        </ul>
+    </div>
+</body>
+<script src="js/hover.js"></script>
+<script>
+    var tops=document.querySelector(".box li:nth-child(1)");
+    var bottom=document.querySelector(".box li:nth-child(3)");
+    var front=document.querySelector(".box li:nth-child(5)");
+    var box=document.querySelector(".box");
+    var CW=window.innerWidth;
+    var CH=window.innerHeight;
+    tops.style.width=tops.style.height=bottom.style.width=bottom.style.height=CW+"px";
+    bottom.style.top=-(CW-CH)+"px";
+    front.style.transform=`translateZ(${CW}px) rotateY(180deg)`;
+    box.style.transform="translateZ(-500px)";    //将整个盒子向后平移500px;
+    box.style.transformOrigin="center center 500px";
+
+    var startangle=0;
+    var nowangle=0;
+    document.onmousedown=function(e){
+        var sx=e.clientX;
+        document.onmousemove=function(e){
+            var cx=e.clientX;
+            nowangle=cx-sx;   //角度就是鼠标移动的大小
+            //box绕着Y轴旋转
+            box.style.transform=`translateZ(-500px) rotateY(${startangle+nowangle}deg)`;  //-500px也要写，不然会覆盖掉上边的值
+        }
+        document.onmouseup=function(){
+            startangle+=nowangle;
+            document.onmousemove=null;
+            document.onmouseup=null;
+        }
+
+    }
+
+</script>
+<script src="js/video.js"></script>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>个人主页</title>
+<link rel="stylesheet" href="css/jquery.fullPage.css">
+	<link rel="stylesheet" href="css/mian.css">
+<style>
+.section { text-align: center; font: 50px "Microsoft Yahei"; color: #fff;}
+</style>
+	<script src="js/jQuery.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.fullPage.min.js"></script>
+	<script src="js/easing.js"></script>
+	<script src="js/index.js"></script>
+<script>
+$(function(){
+	$('#dowebok').fullpage({
+//	    anchhors:["p1","p2","p3","p4"];
+		sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
+		'navigation': true,
+//        navigationTooltips:["11","22","33","44"],
+		fixedElement:"nav",
+		menu:"nav",
+		controlArrowColor:"#78b3dd",
+		verticalCentered:false,
+        navigationColor:"#FF9900",
+        loopBottom:true,
+		afterLoad:function(an,index){
+		    if(index==2){
+		        $("p").animate({height:200},1000);
+		        $("h4").fadeOut(1000);
+
+			}
+            if(index==3){
+                $(".circle1").animate({top:-15,opacity:1},1000,"easeInOutBounce")
+                $(".circle2").animate({top:-15,opacity:1},1000,"easeInOutBounce")
+                $(".circle3").animate({top:-15,opacity:1},1000,"easeInOutBounce")
+                $(".circle4").animate({top:-15,opacity:1},1000,"easeInOutBounce")
+            }
+		},
+		onLeave:function(index){
+		    if(index==2){
+		        $("p").animate({height:0},1000);
+                $("h4").fadeIn(1000);
+			}
+
+		}
+    });
+});
+</script>
+</head>
+
+<body>
+
+<div id="dowebok">
+	<div class="section">
+		<div class="welcome">欢迎来到我的个人主页!</div>
+		<div class="title">Krstal</div>
+		<ul class="nav">
+			<li>Home</li>
+			<li>About</li>
+			<li>Portfolio</li>
+			<li>Services</li>
+			<li>Contact</li>
+		</ul>
+		<div class="tu"></div>
+	</div>
+
+	<div class="section">
+		<!--<div class="cover"></div>-->
+		<div class="aboutme">
+			<h3>About Me</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+				exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.
+			</p>
+			<p>
+				本人热衷于网页设计，对网页响应式设计和UI设计有一定的了解，擅长运用Div + CSS进行网页
+				的排版和设计，能很好根据用户需求完成可用性、易用性、良好交互性和用户体验的网页。
+				自信、乐观、责任心强。具有较好的团队组织能力、分析问题和宣传策划活动能力、协调能力等。
+				学习方面也有较强的求知欲与良好的学习能力。为人真诚,惯于换位思考;对自己要求严格，
+			</p>
+		</div>
+	</div>
+	<div class="section">
+
+		<div class="skill">
+			<h4>My Skill</h4>
+			<div class="kuang">
+				<canvas width="300px" height="200px"></canvas>
+				<canvas width="300px" height="200px"></canvas>
+				<canvas width="300px" height="200px"></canvas>
+				<canvas width="300px" height="200px"></canvas>
+				<div class="circle circle1">PS</div>
+				<div class="circle circle2">HTML/CSS</div>
+				<div class="circle circle3">Javascript</div>
+				<div class="circle circle4">PHP</div>
+			</div>
+		</div>
+	</div>
+	<div class="section">
+		<div class="zhezhao"></div>
+		<div class="slide">
+			<div class="box">
+			<div class="thead">Portfolio</div>
+			<div class="block">
+				You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it
+				killed the world once and got a taste for murder.
+			</div>
+
+			<div class="con">
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">凡客官网</div>
+						<div class="btn"><a href="fk/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">小米</div>
+						<div class="btn"><a href="xm/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">苹果</div>
+						<div class="btn"><a href="apple/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">天猫</div>
+						<div class="btn"><a href="tm/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">京东</div>
+						<div class="btn"><a href="jd/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">沙发网</div>
+						<div class="btn"><a href="sfw/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="box">
+			<div class="thead">Portfolio</div>
+			<div class="block">
+				You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it
+				killed the world once and got a taste for murder.
+			</div>
+
+			<div class="con">
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">银泰网</div>
+						<div class="btn"><a href="yt/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">中国移动</div>
+						<div class="btn"><a href="yd/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">个人网站</div>
+						<div class="btn"><a href="grwz/shouye.html" target="_blank">View</a></div>
+					</div>
+				</div>
+
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">贪吃蛇</div>
+						<div class="btn"><a href="tcs/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">打字游戏</div>
+						<div class="btn"><a href="dz/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">扫雷</div>
+						<div class="btn"><a href="sl/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="box">
+			<div class="thead">Portfolio</div>
+			<div class="block">
+				You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it
+				killed the world once and got a taste for murder.
+			</div>
+
+			<div class="con">
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">绘图板</div>
+						<div class="btn"><a href="draw/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">天气预报</div>
+						<div class="btn"><a href="tqyb/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">留言板</div>
+						<div class="btn"><a href="lyb/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">todolist</div>
+						<div class="btn"><a href="todolist/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">jQuery</div>
+						<div class="btn"><a href="sc/index.html" target="_blank">View</a></div>
+					</div>
+				</div>
+				<div class="neirong">
+					<div class="zhe">
+						<div class="project">My Project</div>
+						<div class="net">3D</div>
+						<div class="btn"><a href="3D/3D.html">View</a></div>
+					</div>
+				</div>
+			</div>
+			</div>
+	</div>
+	<div class="section">
+		<h1>Contact</h1>
+		<div class="method">
+			<div class="method_con">
+				<div class="icon">&#xe64a;</div>
+				<div class="wenzi">841020677@qq.com</div>
+			</div>
+			<div class="method_con">
+				<div class="icon">&#xe63b;</div>
+				<div class="wenzi">841020677@qq.com</div>
+			</div>
+			<div class="method_con">
+				<div class="icon">&#xe622;</div>
+				<div class="wenzi">18435105613</div>
+			</div>
+		</div>
+		<div class="liuyan">
+			<input type="text" value="your name">
+			<input type="text" value="your email">
+			<input type="text" value="your subject">
+		 	<!--<div class="con_wenzi">-->
+				<!--<ul>-->
+
+				<!--</ul>-->
+			<!--</div> -->
+			<div class="word">
+				<textarea name="" id="" cols="30" rows="10" placeholder="请输入留言..."></textarea>
+				<input type="button" value="sendMessage" id="send">
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<a href="http://www.dowebok.com/" style="display: none;">dowebok</a>
+<a href="http://www.dowebok.com/77.html" style="display: none;">jQuery全屏滚动插件fullPage.js</a>
+
+</body>
+</html>

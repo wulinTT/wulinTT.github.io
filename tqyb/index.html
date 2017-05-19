@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jQuery.js"></script>
+    <script>
+        $(function(){
+            $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js",function(){
+                var city=remote_ip_info.city;
+                update(city);
+            })
+            function update(city){
+                $("tbody").empty();   //每次更新前先清空
+                $(".cityname").html(city);    //标题随城市不同而改变
+                var arr=["今天","明天","后天"];
+                $.get("https://free-api.heweather.com/v5/weather",{city:city,key:"264fdac9c05c47298470c9d442b626f3"},function(r){
+                      console.log(r)
+//                    console.log(r.HeWeather5[0].daily_forecast);    //三天的天气情况，3个获取对象
+                    $.each(r.HeWeather5[0].daily_forecast,function(index,val){     //遍历三天的信息
+                        $("<tr>").html(function(){
+                            return "<td>"+arr[index]+"</td><td>"+val.date+"</td><td>"+val.cond.txt_d+"</td><td>"+val.tmp.min+"C~"
+                                +val.tmp.max+"C"+"</td><td>"+val.wind.dir+"</td>"}).appendTo("#con");
+                    })
+                  var m=r.HeWeather5[0].suggestion;
+                $.each(m,function (index,val) {
+                  $("#"+index).children(".zs").html(val.brf);
+                  $("#"+index).children(".jy").html(val.txt);
+
+
+                })
+                })
+            }
+
+            $(".head").click(function(){
+                $(".con").slideToggle(1000);
+            })
+            //切换城市
+            $("#toggle").click(function(){
+                $(".area").slideToggle(300);
+            }).one("click",function(){     //一次性处理函数
+                $.getJSON("citys.json",function(r){       //载入json数据
+//                    console.log(r)
+                    var province={};
+                    $.each(r,function(index,value){
+                        if(!province[value.provinceZh]){
+                            province[value.provinceZh]=[];
+                        }
+                        province[value.provinceZh].push(value.cityZh);
+                    });
+                    $.each(province,function(i,v){
+                        $("<option>").text(i).val(i).appendTo("#province");
+                    })
+                    $("#province").change(function(){
+                        $("#city").html("<option>请选择市区</option>");
+                        var val=$(this).val();
+                        var citys=province[val];
+                        $.each(citys,function(i,v){
+                            $("<option>").text(v).val(v).appendTo("#city");
+                        })
+                    })
+                    $("#city").change(function(){
+                        if($(this).val()!=""){
+                            update($(this).val());
+                        }
+                    })
+
+                })
+            })
+        })
+    </script>
+    <style>
+    *{
+        list-style: none;
+    }
+        #weather{
+            width: 600px;height: 300px;
+            /*margin:0 auto;*/
+            background: #2dc2ff;
+            background-image: url("img/1.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% 100%;
+        }
+        #weather tr{
+            /*height:30px;*/
+        }
+        #weather td{
+            color: #000;
+            text-align: center;
+        }
+
+        /*行内块级元素*/
+        label{
+            display: block;
+        }
+        div.change{
+            width: 500px;height: auto;
+            margin: 0 auto;
+        }
+        .area{
+            display: none;
+        }
+        h3{
+            margin: 0 auto;
+            text-align: center;
+        }
+        .suggestion{
+            width:700px;
+            overflow: hidden;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+        .head{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            /*background: #ff5053;*/
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .con{
+            width:100%;
+            height: auto;
+            display: none;
+
+        }
+    ul{
+        width: 700px;
+        height:130px;
+        /*background: #ff5053;*/
+    }
+        ul>li{
+            width: 150px;
+            height:150px;
+            text-align: center;
+            float: left;
+            background: #ffee62;
+            font-size: 14px;
+            color: #000;
+            line-height: 150px;
+            border:1px solid #000;
+            border-right: 0;
+            border-bottom: 0;
+        }
+
+        ul>li:last-child{
+            line-height: 20px;
+            border-right:1px solid #000;
+        }
+
+    </style>
+</head>
+<body>
+<h3><span class="cityname"></span>天气预报</h3>
+    <div class="change">
+        <label id="toggle">
+            <input type="button" value="切换城市">
+        </label>
+        <label class="area">省：
+            <select id="province">
+                <option value="">请选择省</option>
+            </select>
+            市：
+            <select value="" id="city">
+                <option value="">请选择市区</option>
+            </select>
+        </label>
+    </div>
+<table border="" cellspacing="0" cellpadding="0" align=center id="weather">
+    <thead>
+        <tr>
+            <th></th>
+            <td>日期</td>
+            <td>天气</td>
+            <td>温度</td>
+            <td>风力</td>
+        </tr>
+    <tbody id="con">
+
+    </tbody>
+    </thead>
+</table>
+</div>
+<div class="suggestion">
+    <div class="head"><span class="cityname"></span>今日各项指数</div>
+    <div class="con">
+    <ul id="air">
+        <li>空气指数</li>
+        <li class="zs"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="comf">
+        <li>空气指数</li>
+        <li class="zs"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="cw">
+        <li>洗车指数</li>
+        <li class="zs"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="drsg">
+        <li>穿衣指数</li>
+        <li class="zs"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="flu">
+        <li>流感指数</li>
+        <li class="zs"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="sport">
+        <li>运动指数</li>
+        <li class="zs"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="trav">
+        <li>出游指数</li>
+        <li class="zs"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="uv">
+        <li>防晒指数</li>
+        <li class="zs"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+

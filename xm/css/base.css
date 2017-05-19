@@ -1,0 +1,10 @@
+*{
+	margin:0;
+	padding:0;
+	list-style:none;
+
+}
+/*可以用群组选择器*/
+a{
+	text-decoration:none;
+}

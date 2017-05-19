@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>扫雷</title>
+    <script src="jQuery.js"></script>
+    <script>
+//        window.load
+//       $(function(){})
+        $(document).ready(function(){
+            var t;
+            var num=5;
+            $(".choose").hide();
+            $(".control").slideUp(500);
+//            createLei();
+            function createLei(){
+                do{
+                $(".sence").empty();    //每次产生雷之前先清空
+                for(var i=0;i<10;i++){
+                    for(var j=0;j<10;j++){
+                        var isLei=Math.random()>0.85;   //15%的概率
+                        $("<div>").addClass(function(){
+                            if(isLei){
+                                return "block lei";   //返回一个类名
+                            }else{
+                                return "block";
+                            }
+                        })
+                            .attr("id",i+"-"+j)     //设置或返回被选元素的属性值   //用id保存当前坐标
+                            .data("pos",{x:i,y:j})    //data()  保存数据
+                            .mousedown(mousedownEvent)    //鼠标按下触发一个函数
+                            .appendTo(".sence")
+                    }
+                }
+                }while($(".lei").length!=num);    //先执行一次，如果雷的个数不是15个，就继续返回循环继续创建
+            }     //创建雷
+
+            //去除浏览器默认的右击事件
+            $(document).on("contextmenu",function(e){
+                e.preventDefault();
+            })
+
+            //时间函数
+            var st=0;
+            function time(){
+                $(".time").html("时间："+st);
+                st++;
+            }
+
+
+            var bestscor=localStorage.bestscor?JSON.parse(localStorage.bestscor):[];
+            function gameover(){
+                clearInterval(t);
+                $("tbody").empty();
+                if(bestscor.length<3||(bestscor.length>=3&&st<bestscor[2].scor)){
+                    var player=prompt("请输入您的姓名");
+                    bestscor.push({player,scor:st});
+                    bestscor.sort(function (a,b) {
+                        if(a.scor>b.scor){
+                            return 1;
+                        }else{
+                            return -1;
+                        }
+                    })
+                    if(bestscor.length>3){
+                        bestscor.pop();
+                    }
+                    localStorage.bestscor=JSON.stringify(bestscor)
+                }
+            }
+
+            function phbCon() {
+                $(bestscor).each(function (index,ele) {
+                    $("<tr><td>"+(index+1)+"</td>" +"<td>"+(ele.player)+"</td>"+"<td>"+(ele.scor)+"</td></tr>").appendTo('tbody');
+
+                })
+            }
+
+
+
+            //点击开始
+            $(".btn").click(function(){
+                $(".start").slideUp(1000);
+                $(".control").slideDown(1000);
+                createLei();
+                t=setInterval(time,1000);
+            })
+
+            //点击重新开始
+            var restart=$(".restart");
+            restart.click(function(){
+             st=0;
+                time();
+                clearInterval(t);
+                $(".over").hide();
+                $(".sence").empty();
+                num=5;
+                createLei();
+                t=setInterval(time,1000);
+            })
+
+            //点击难度选择
+
+            $(".choose_btn").click(function(){
+//                $(".choose").fadeOut();
+                $(".choose").slideToggle(1000);
+            })
+            $(".easy").click(function(){
+                $(".choose").fadeOut(500);
+//                $(".start").hide();
+//                $(".control").slideDown();
+                num=5;
+//                createLei();
+//                t=setInterval(time,1000);
+            })
+            $(".medium").click(function(){
+                $(".choose").fadeOut(500);
+//                $(".start").hide();
+//                $(".control").slideDown();
+                num=10;
+//                createLei();
+//                t=setInterval(time,1000);
+            })
+            $(".difficult").click(function(){
+                $(".choose").fadeOut(500);
+//                $(".start").hide();
+//                $(".control").slideDown();
+                num=15;
+//                createLei();
+//                t=setInterval(time,1000);
+            })
+
+            //点击排行榜
+            $(".phb").click(function(){
+                $(".phblist").slideToggle(500);
+                phbCon();
+            })
+
+
+            $(".phbBtn").click(function(){
+                $(".phblist").fadeIn(500);
+
+                phbCon();
+            })
+
+            function mousedownEvent(e){
+//                console.log(e.which)     //左击是1，右击是3
+                if(e.which==1){
+                    leftclick.call(this);
+                }else{
+                    rightclick.call(this);
+                }
+            }
+            function leftclick(){
+                if($(this).hasClass("flag")){    //已被标记
+                    return;
+                }
+                if($(this).hasClass("lei")){     //如果是雷就显示
+                    $(".lei").addClass("show");
+//                    alert("失败");
+                    $(".over").fadeIn(1000);
+//                    gameover();
+                    clearInterval(t);
+                }else{
+                    $(this).addClass("num");
+                    var pos=$(this).data("pos");
+                    var n=0;
+                    for(var i=pos.x-1;i<=pos.x+1;i++){
+                        for(var j=pos.y-1;j<=pos.y+1;j++){
+                            if($("#"+i+"-"+j).hasClass("lei")){
+                                n++;
+                            }
+                        }
+                    }
+                    $(this).html(n);
+                    if(n==0){
+                        for(var i=pos.x-1;i<=pos.x+1;i++){
+                            for(var j=pos.y-1;j<=pos.y+1;j++){
+                                var obj=$("#"+i+"-"+j);
+                                if(obj.length==1&&!obj.hasClass("num")){
+                                    leftclick.call(obj[0]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }   //左击
+            function rightclick(){
+                if($(this).hasClass("num")){
+                    return;
+                }
+                if($(this).hasClass("flag")){
+                    $(this).removeClass("flag");
+                    num++;
+                }else{
+                    num--;
+                    if(num<0){
+                        num++;
+                        $(".over").fadeIn(1000);
+//                        $(".phblist").fadeIn(500);
+//                        alert("失败");
+                        clearInterval(t);
+                        gameover();
+                        return;
+                    }
+                    $(this).addClass("flag");
+                    if(num==0){
+                        if($(".flag").filter(".lei").length==num||5){
+                            alert("成功");
+                            $(".success").fadeIn(500);
+                            $(".start").show();
+                            $(".choose").slideUp();
+                            gameover();
+                        }
+                    }
+                }
+                $(".flagnum").html("flag:"+num);
+            }   //右击
+
+
+        })
+    </script>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .container{
+        width: 710px;
+        height: 500px;
+        position: fixed;
+        top: 0;
+        left:50%;
+        margin-left: -350px;
+    }
+    .sence{
+        width: 500px;
+        height: 500px;
+        border-top:1px solid #ccc;
+        border-left:1px solid #ccc;
+        float: left;
+        /*margin: 0 auto;*/
+    }
+    .start{
+        width: 510px;
+        height: 500px;
+        /*background: #84ffd8;*/
+        background-image: url(img/2.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        opacity: 0.8;
+    }
+    .title{
+        width: 40px;
+        height: 160px;
+        /*margin: 0 auto;*/
+        float: left;
+        margin-left: 20px;
+        margin-top: 30px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 30px;
+        color: #fff;
+    }
+    .btn{
+        width: 240px;
+        height: 70px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        bottom: 130px;
+        /*line-height: 60px;*/
+        /*text-align: center;*/
+        /*font-size: 20px;*/
+        /*color: #fff;*/
+        /*background: #ff8477;*/
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .block{
+        width:49px;height:49px;
+        border-right:1px solid #ccc;
+        border-bottom:1px solid #ccc;
+        background: #ff9922;
+        float: left;
+    }
+    .control{
+        width:200px;
+        height:500px;
+        background: #fcfa73;
+        float: left;
+        display: none;
+
+    }
+
+    .show{
+       background-image: url("img/3.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+    .num{
+        background: #fff;
+        color:#222;
+        text-align: center;
+        line-height: 50px;
+    }
+    .flag{
+        /*background: yellow;*/
+        background-image: url("img/1.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+    .time, .flagnum{
+        width: 150px;height: 60px;
+        background: #dfffda;
+        /*border: 1px solid #000;*/
+        margin: 20px auto;
+        border-radius: 5px;
+        padding-left: 10px;
+        box-sizing:border-box;
+        line-height: 60px;
+        color: #222;
+        text-align: center;
+    }
+    .restart{
+        width: 100px;
+        height: 30px;
+        background: #dfffda;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        line-height: 30px;
+        color: #222;
+        text-align: center;
+        cursor: pointer;
+    }
+    .phb{
+        width: 170px;
+        height: 50px;
+        /*background: #ff5053;*/
+        position: absolute;
+        right: 40px;
+        bottom: 15px;
+    }
+    .phbBtn{
+        width: 100px;
+        height: 30px;
+        background: #dfffda;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        line-height: 30px;
+        color: #222;
+        text-align: center;
+        cursor: pointer;
+    }
+    .choose_btn{
+        width: 170px;
+        height: 50px;
+        /*background: #ff5053;*/
+        position: absolute;
+        left: 40px;
+        bottom: 30px;
+
+    }
+    .choose{
+        width: 300px;
+        height: 270px;
+        background: #ffee62;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 120px;
+        border-radius: 10px;
+        /*display: none;*/
+    }
+    .choose_title, .guanka{
+        height: 30px;
+        margin: 30px auto;
+        line-height: 30px;
+        text-align: center;
+        font-size: 18px;
+        color: #fff;
+    }
+    .guanka{
+        width: 100px;
+        padding: 0 10px;
+        box-sizing:border-box;
+        border: 1px solid #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .pheasy{
+        width:100%;
+        height:100%;
+        border-collapse: collapse;
+        border: none;
+
+    }
+    .phblist{
+        width: 160px;
+        height: 200px;
+        background: #82f478;
+        /*margin: 0 auto;*/
+        /*margin-top: 40px;*/
+        position: absolute;
+        left: 520px;
+        bottom: 20px;
+        border-radius: 5px;
+        display: none;
+        overflow: hidden;
+    }
+
+    th{
+        width: 50px;
+        border:1px solid #fff;
+        height:50px;
+        box-sizing: border-box;
+    }
+    tr{
+        height:50px;
+        width:100%;
+    }
+    td{
+        border:1px solid #fff;
+        height:48px;
+        /*box-sizing: border-box;*/
+        line-height: 50px;
+        text-align: center;
+    }
+    .over, .success{
+        width:500px;
+        height: 500px;
+        background: rgba(15,30,25,0.8);
+        position: absolute;
+        top:0;
+        right:210px;
+        line-height: 230px;
+        text-align: center;
+        font-size: 50px;
+        color: #ff832e;
+        display: none;
+    }
+    .tu{
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-radius: 10px;
+        background-image: url("img/1.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="start">
+            <div class="title">扫雷游戏</div>
+                <div class="choose_btn"></div>
+                <div class="choose">
+                    <div class="choose_title">请选择</div>
+                    <div class="guanka easy">Easy</div>
+                    <div class="guanka medium">Mideum</div>
+                    <div class="guanka difficult">Difficult</div>
+                </div>
+            <div class="phb"></div>
+            <div class="btn"></div>
+
+        </div>
+        <div class="sence"></div>
+        <div class="control">
+            <div class="time">时间：</div>
+            <div class="flagnum">flag:15</div>
+            <div class="restart">重新开始</div>
+            <div class="phbBtn">排行榜</div>
+            <div class="success">Well done!</div>
+            <div class="over">
+                GAME OVER!
+                <div class="tu"></div>
+            </div>
+
+        </div>
+        <div class="phblist">
+            <table class="pheasy">
+                <thead>
+                <tr>
+                    <th>名次</th>
+                    <th>姓名</th>
+                    <th>成绩</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

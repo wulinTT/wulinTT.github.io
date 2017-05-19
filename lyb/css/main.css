@@ -1,0 +1,48 @@
+h3{
+	color: #FFAB09;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.lybBox{
+	width: 800px;
+	height: 300px;
+	margin: 0 auto;
+	margin-top: 10px;
+
+}
+.lybBox textarea{
+	width: 800px;
+	height: 300px;
+	resize:none;
+	border: 2px solid #ccc;
+	background: #d3ffd1;
+}
+.lybBox input[type=button]{
+	width: 100px;
+	height: 30px;
+	background: #FF8477;
+    float: right;
+	border: 0;
+}
+.con{
+	width: 800px;
+	height: 100px;
+	margin: 0 auto;
+	border:1px solid #ccc;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+.con ul{
+	display: flex;
+	flex-direction:column-reverse;  /*倒着排*/
+}
+.tishi{
+	text-align: center;
+	color: #666;
+	font-size: 14px;
+	clear:right;    /* 不让右边有浮动*/
+}
+.tishi span,.tishi b{
+	color: #ff3d6b;
+}

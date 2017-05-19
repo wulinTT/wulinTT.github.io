@@ -1,0 +1,1759 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('../font/iconfont.eot');
+  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../font/iconfont.woff') format('woff'),
+  url('../font/iconfont.ttf') format('truetype'),
+  url('../font/iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconfont{
+	float: left;
+	margin-top: 12px;
+	color:#b0b0b0;
+}
+
+.iconfont:hover{
+	color:#ff6700;
+}
+.dingbu{
+   width:100%;
+}
+
+
+header{
+    height:40px;
+    background:#333333;
+}
+.neikuan{
+	width:1226px;
+	margin:0 auto;
+}
+.headerNav{
+	float:left;
+	height:40px;
+	/*background:red;*/
+}
+.headerNav a{
+	padding:0 7px;  /* 用字来撑开宽度，左右内边距为7px,上下内边距为0，字体可以居中*/
+	float；left;
+	color:#b0a485;
+	line-height:40px;
+	font-size:12px;  /*字的宽度*/
+	/*border-right:2px solid #424242;*/
+	/*margin-top:13px;*/
+
+
+}
+
+.headerNav a:hover{
+	color:#fff;
+}
+
+.headerNav span{
+	/*font-style: normal;*/
+	font-size:12px;
+	color:#423d39 ;
+	float；left;
+	line-height:40px;
+}
+
+.dengzhu{
+	 width:278px;
+	 height:40px;
+	 float:right;
+}
+
+.dengzhu a{
+	/*padding:0 7px; */
+	float；left;
+	color:#b0b0b0;
+	line-height:40px;
+	font-size:12px;  
+}
+.dengzhu span{
+	/*font-style: normal;*/
+	font-size:12px;
+	color:#423d39 ;
+	float；left;
+	line-height:40px;
+}
+.dengzhu a:hover{
+    color:#fff;
+}
+.shopping{
+	width:120px;
+	height:40px;
+	padding: 0 15px;
+	box-sizing:border-box;
+	background:#424242;
+	float:right;
+	position: relative;
+}
+.gouwu_list{
+	width: 290px;
+	/*height: 80px;*/
+	overflow: hidden;
+	background: #fff;
+	box-shadow: 1px 1px 1px #ccc;
+	position: absolute;
+	top: 40px;
+	right: 0;
+	z-index: 10;
+	line-height: 80px;
+	text-align: center;
+	font-size: 14px;
+	color: #666;
+	display: none;
+}
+/*.shopping:hover{
+	background:#fff;
+}*/
+.shopping-tupian{
+	float:left;
+	margin-left:16px;
+}
+
+.shopping-wenzi{
+	line-height:40px;
+	font-size:12px;
+	float:left;
+	margin-left:5px;
+	color:#b0b0b0;
+}
+/*.shopping-wenzi:hover{
+	color:#ff6700;
+}*/
+
+
+.mainNav{
+      height:100px;
+      position: relative;
+}
+
+.navBox{
+    height:55px;
+    float:left;
+    margin-top:22px;   /*有浮动，无bug*/
+    /*background:red;*/
+    /*overflow:hidden;*/
+   
+}
+.logo{
+	float:left;
+	height:55px;
+}
+.logoimg{
+	width:49px;
+	height:49px;
+	float:left;
+	background-image:url(../img/logo.png);
+	background-repeat: no-repeat;
+	
+}
+.mianbgcolor{
+    background-color:#ff6700;  /*不会覆盖*/
+}
+.logo h2{
+	width:180px;
+	height:66px;
+	margin-left:4px;
+	float:left;
+	background:red;
+	margin-top:-5px;
+}
+.logoimg a{
+	display:block;
+	width:100%;
+	height:100%;
+}
+
+.nav-info{
+	height: 88px;
+	float:left;
+	padding-left:16px;
+	box-sizing:border-box;
+	/*background: red;*/
+	/*margin-left:16px;*/
+	/*position: relative;*/
+}
+.nav-info a{
+	font-size:18px;
+	line-height:55px;
+	color:#333333;
+}
+.nav-info a:hover{
+   color:#ff6700;
+}
+.nav_list{
+    width:100%;
+    /*height: 240px;*/
+    overflow: hidden;
+    background: #fff;
+    border-top: 1px solid #dedede;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    z-index: 1; 
+    display: none;
+}
+.nav_list_content{
+	width: 200px;
+	height: 100%;
+	float: left;
+}
+.content1{
+	margin-left: 60px;
+
+}
+.xinpin{
+	width: 60px;
+	height: 20px;
+	border: 1px solid #ff6700;
+	margin: 0 auto;
+	font-size: 12px;
+	color: #ff6700;
+	line-height: 20px;
+	text-align: center;
+}
+.nav_list_content img{
+	display: block;
+	width: 150px;
+	height:auto;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+.nav_list_content img:nth-child(2){
+	margin-top: 20px;
+}
+.xinpin_intro{
+	width: 100%;
+	margin-top: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	font-size: 12px;
+	color: #666;
+}
+.intro1{
+	margin-top: 20px;
+}
+.intro2{
+	color: #ff6700;
+	margin-top: 0;
+}
+.xiaomishouji{
+	margin-left:8px;
+}
+.nav_list_shuxain{
+	width: 1px;
+	height: 80px;
+	background: #e2e0e2;
+	float: left;
+	margin-top: 60px;
+
+}
+
+
+
+
+.sousuoBox{
+	width:296px;
+	height:48px;
+	float:right;
+	/*background:red;*/
+	margin-top:25px;
+	position:relative;
+}
+.search{
+	width:293px;
+	height:48px;
+    margin-left:1px;
+  }
+
+.search-neibu{
+	
+	height:13px;
+	background:#d0cdcb;
+	position:absolute;
+	top:16px;
+	left:98px;
+
+}
+
+.search-neibu:hover{     /*让盒子颜色变化，变背景*/
+   background:#ff6700;
+}
+
+.search-info{
+	 font-size:10px;
+	 line-height:13px;
+	 color:#87759a;
+	 cursor:pointer;
+  } 
+
+.search-info:hover{  /* 字体变化*/
+   color:#f8f6f5;
+}
+
+.liwai{
+    position:absolute;
+	top:16px;
+	left:158px;
+}
+
+
+.sousuoBtn{
+	width:50px;
+	height:48px;
+	position:absolute;
+    /*background:red;*/
+    top:1px;
+    right:1px;
+    background-image:url(../img/sousuo.png);
+    background-repeat: no-repeat;
+    border-left:1px solid #e0e0e0;
+    background-position: center;
+
+}
+
+
+
+
+
+	
+.bannerArea{
+	height:460px;
+}
+.bannerBox{
+   height:460px;
+   /*background:red;*/
+   position:relative;
+   /*background-image: url(../img/banner.jpg)*/
+}
+.banner_tu{
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.banner_tu img{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 1;
+    transition:all 0.5s linear;
+}
+.bannerNav{
+	width:234px;
+	height:460px;
+	position:absolute;
+	top:0;
+	left:0;
+	background-color:rgba(0,0,0,0.6);
+}
+.bannerNav ul{
+    margin-top:39px;
+}
+.bannerNav ul li{
+	height:42px;
+	padding-left:29px;
+	padding-right:24px;
+	background:#59524a;
+    cursor:pointer;
+}
+
+.bannerNav ul li:hover{
+	background:#ff6700;
+}
+
+.bannerNav>ul>li>span{
+	float:left;
+	font-size:14px;
+	color:#ffffda;
+	line-height:42px;
+
+}
+
+.bannerNav>ul>li>span{
+	color:pink;
+}
+
+
+.bannerNav ul li i{
+	float:right;
+	font-size:8px;
+	color:#a3a3a4;
+	line-height:42px;
+}
+.bannerNavLis{
+  /*width:730px;*/
+  overflow: hidden;
+  height:460px;
+  background:#fff;
+  position:absolute;
+  top:0;
+  left:234px;
+  z-index: 10;
+  display:none;
+  box-shadow: 0 1px 10px #666;
+}
+.bannerNavLis_content{
+	width: 248px;
+	height: 460px;
+	padding-top: 39px;
+	box-sizing:border-box;
+    float: left;
+}
+.bannerNavLis_content1{
+	width: 100%;
+	height: 42px;
+	margin-top: 24px;
+	/*background: black;*/
+}
+.teshu{
+	margin-top: 0;
+}
+
+.bannerNavLis_content1 img{
+	display: block;
+	width: auto;
+	height: 42px;
+	float: left;
+	margin-left: 10px;
+}
+.bannerNavLis_content1 span{
+	line-height: 42px;
+	font-size: 12px;
+	color: #000;
+	margin-left: 20px;
+}
+.bannerNavLis_content1 span:hover{
+	color: #ff6700;
+}
+.xuangou{
+	width: 55px;
+	height: 20px;
+	margin-top: 12px;
+	line-height: 42px;
+	border: 1px solid #ff6709;
+	float: right;
+	margin-right: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	text-align: center;
+	color: #ff6709;
+	background: rgba(255,103,0,0);
+	transition:all 0.3s linear;
+}
+.xuangou:hover{
+	background: rgba(255,103,0,1);
+	color: #fff;
+}
+.banner-Btn-zuo{
+	width:30px;
+	height:60px;
+	top:0;
+	bottom:0;
+	margin:auto;
+	color:#aaaaac;
+	background-image:url(../img/button.png);
+	background-position:-5px -5px; 
+	position:absolute;
+	left:234px;
+	cursor:pointer;
+}
+.banner-Btn-you{
+	width:30px;
+	height:60px;
+	top:0;
+	bottom:0;
+	margin:auto;
+	color:#aaaaac;
+	background-image:url(../img/button.png);
+	background-position:-48px -6px; 
+	position:absolute;
+	right:0;
+	cursor:pointer;
+}
+.banner-Btn-you:hover{
+
+}
+.gundong{
+	width:90px;
+	height:10px;
+	position:absolute;
+
+	/*水平居中*/
+	right:34px;
+	bottom:16px;
+	
+}
+.gundong_yuan{
+	width: 6px;
+	height: 6px;
+	background: #999;
+	border-radius: 50%;
+	border: 2px solid #ccc;
+	float: left;
+	margin-left: 8px;
+}
+
+
+
+
+
+
+
+
+.into{
+    width:1226px;
+    height:170px;
+    background:#ffffff;
+    margin:0 auto;
+    margin-top:14px;
+}
+.fenlei{
+	width:234px;
+    height:170px;
+    background:#5f5750;
+     /*既有定位又有浮动，定位有效，浮动无效*/
+    float:left;
+}
+
+.fenlei-shang{
+	width:100%;
+	overflow:hidden;
+}
+
+.feilei1{
+	width:72px;
+	height:80px;
+	/*background:yellow;*/
+	border:1px solid #5f5750;
+	float:left;
+}
+
+.icon1{
+	text-align: center;
+	width: 100%;
+	height: 16px;
+	font-size: 26px;
+	font-weight: bold;
+	/*background: red;*/
+	margin-bottom: 20px;
+	color:#cdc5a7;
+}
+.icon1:hover{
+	color: #fff;
+}
+.fenlei-xifen-kuang{
+	width:100%;
+	height:16px;
+	margin-top:10px;
+}
+.fenlei-xifen-info{
+	font-size:10px;
+	line-height:18px;
+	color:#cdc5a7;
+	text-align:center;
+}
+.fenlei-xifen-info:hover{
+	color: #fff;
+}
+.fenlei-xian{
+	width:1px;
+    height:70px;
+    background:#665e57;
+    float:left;
+    margin-left:2px;
+    margin-top:8px;
+}
+
+
+
+.fenlei-hengxian{
+	width:62px;
+	height:1px;
+	background:#665e57;
+	float:left;
+	margin-left:10px;
+}
+
+
+
+
+
+
+.tupian{
+	width:316px;
+	height:170px;
+	float:left;
+	margin-left:14px;
+	
+}
+
+.tupian-bianxiao{
+	width:316px;
+	height:170px;
+}
+
+.danpin{
+	width:1226px;
+	height:83px;
+	 /*background:red;*/
+	 margin:0 auto;
+	 padding-top: 50px;
+	 box-sizing:border-box;
+	 /*border:1px solid white;*/
+	 overflow:hidden;
+}
+
+.danpin-name{
+	font-size:22px;
+	color:#333333;
+	/*margin-top:44px;*/
+	float:left;
+}
+
+.danping-Btn_you{
+	width:35px;
+	height:24px;
+	border:1px solid #e0e0e0;
+	float:right;
+    /*margin-top:50px;*/
+    background:#ffffff;
+}
+.danping-Btn_zuo{
+	width:35px;
+	height:24px;
+	border:1px solid #e0e0e0;
+	float:right;
+    /*margin-top:50px;*/
+    background:#ffffff;
+}
+.danping-jiantou{
+	color:#c6c5c4;
+	/*margin-left:10px;*/
+	text-align:center;
+	cursor:pointer;
+}
+.danping-jiantou:hover{
+	color:#ff6700;
+}
+
+.jiantou-youbianju{
+	/*margin-right:60px;*/
+	margin-top:80px;
+}
+.jiantou-youbianju1{
+	/*margin-right:0;*/
+	margin-top:80px;
+}
+.neikuan{
+	width: 1226px;
+	height: 470px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+.danpin-tuijian{
+	width:1000%;
+	height:360px;
+	background:#fefefe;
+	margin:0 auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+}
+
+.danpin-tuijian-tupian{
+	width:234px;
+	height:360px;
+    border-top:1px solid #ffac13;
+    background:blue;
+    float:left;
+    margin-left:14px;
+    background:#fafafa;
+    position:relative;
+    overflow: hidden;
+}
+.danpin-tuijian-tupian:hover{
+	box-shadow:0 1px 25px 0px #d7d4d4;
+    transform:translate(0,-5px); 
+    transition:all 1s;
+    }`
+.dongxiao{
+	box-shadow:0 1px 18px 0px #fff; 
+    
+}
+.dongxiao:hover{
+	box-shadow:0 1px 25px 0px #d7d4d4; 
+	transform:translate(0,-5px); 
+    transition:all 1s;
+}
+
+.yincang{
+	width:234px;
+	/*height:0;*/
+	overflow:hidden;
+	padding: 10px 0;
+	box-sizing:border-box;
+	background:#ff6700;
+	position:absolute;
+	left:0;
+	/*right:0;
+	margin:auto;*/
+	bottom: -90px;
+	transition:all 0.2s linear;
+    opacity: 0;
+}
+.yincang2{
+	width:234px;
+	/*height:0;*/
+	overflow:hidden;
+	padding: 10px 0;
+	box-sizing:border-box;
+	background:#ff6700;
+	position:absolute;
+	left:0;
+	/*right:0;
+	margin:auto;*/
+	bottom: -90px;
+	transition:all 0.2s linear;
+    opacity: 0;
+}
+.yincang3{
+	width:234px;
+	/*height:0;*/
+	overflow:hidden;
+	padding: 10px 0;
+	box-sizing:border-box;
+	background:#ff6700;
+	position:absolute;
+	left:0;
+	/*right:0;
+	margin:auto;*/
+	bottom: -90px;
+	transition:all 0.2s linear;
+    opacity: 0;
+}
+/*.yincang:hover{
+   height:90px;
+}*/
+.yincang-wenzi-kuang{
+    width: 100%;
+    height:20px;
+    /*margin-top:8px;*/
+    /*margin-left:25px;*/
+    /*background:red;*/
+    text-align: center;
+    line-height:20px;
+	font-size:12px;
+	color:#ffffff;
+}
+.yincang-wenzi-kuang a{
+	color: #fff;
+}
+
+
+
+.teshu{
+	margin-left:0;
+}
+.danpin-tuijian-bianxiao{
+	width:90px;
+	height:137px;
+	margin-top:49px;
+	margin-left:71px;
+}
+.danpin-tuijian-shuomimng-kuangkuang{
+	height:22px;
+	text-align:center;
+}
+.danpin-tuijian-shuomimng-wenzi{
+	font-size:15px;
+	color:#666;
+	line-height:22px;
+}
+.danpin-tuijian-gongneng{
+	height:20px;
+	text-align:center;
+
+}
+.danpin-tuijian-gongneng-shuoming{
+	font-size:12px;
+   	color:#b0b0b0;
+	line-height:20px;
+}
+.danpin-tuijian-jiage{
+	height:21px;
+	text-align:center;
+	margin-top:4px;
+}
+.danpin-tuijian-jiage-shuoming{
+	font-size:13px;
+   	color:#fd7d09;
+	line-height:21px;
+}
+
+
+.danpin-tuijian-pinglun{
+	height:21px;
+	text-align:center;
+	margin-top:12px;
+}
+.danpin-tuijian-pinglun-shuoming{
+	font-size:12px;
+   	color:#b7cbeb;
+	line-height:21px;
+}
+
+
+
+
+
+
+.biankuang2{
+	border-top:1px solid #83c44e;
+}
+.biankuang3{
+	border-top:1px solid #2196f3;
+}
+.biankuang4{
+	border-top:1px solid #e53935;
+}
+.biankuang5{
+	border-top:1px solid #00c0a5;
+}
+
+.chakanquanbu{
+	width: 100%;
+	height: 119px;
+	background:#f5f5f5;
+}
+
+.chankanquanbu-wenzi{
+	width:1226px;
+	height:119px;
+	margin-top:36px;
+	background:#f5f5f5;
+	margin:0 auto;
+	border:1px solid #f5f5f5;
+}
+.zhineng{
+    height:60px;
+    margin-top:60px;
+    float:left;
+    /*margin-left:60px;*/
+}
+.zhineng-shuoming{
+    font-size:20px;
+   	color:#333333;
+	line-height:60px;
+}
+
+.zitidaxiao{
+	color:#424242;
+	font-size:16px;
+}
+
+
+.chakanquanbu-yuan{
+	width:20px;
+	height:20px;
+	background:#b0b0b0;
+	float:right;
+	border-radius:50%;
+    /*margin-right:62px;*/
+    margin-top:80px;
+}
+.chakanquanbu-yuan:hover{
+	background:#ff6700;
+}
+
+.yuan-jiantou{
+	color:white;
+	margin-left:7px;
+}
+.chakanzuobian-left{
+	height:60px;
+    margin-top:60px;
+	float:right;
+	margin-right:10px;
+	cursor:pointer;
+}
+
+.chakanzuobian-left-wenzi{
+	font-size:18px;
+   	color:#333333;
+	line-height:60px;
+
+}
+.chakanzuobian-left-wenzi:hover{
+	color:#ff6700;
+}
+.tongping{
+	width:100%;
+	overflow:hidden;
+	background:#f5f5f5;
+}
+.tongping1{
+	width:100%;
+	overflow:hidden;
+	background:#f5f5f5;
+}
+
+.quanbu{
+    width:1226px;
+    margin:0 auto;
+    overflow:hidden;
+    background:#f5f5f5;
+}
+
+.jingshuiqi{
+	float:left;
+}
+.jingshuiqi:hover{
+	box-shadow:0 1px 25px 0px #d7d4d4; 
+	transform:translate(0,-5px); 
+    transition:all 1s;
+}
+
+.quanbu-tupian{
+	width:978px;
+	margin-left:14px;
+	background:#f5f5f5;
+	float:left;
+}
+
+.qubiankuang{
+	border:none;
+	height:290px;
+
+}
+.margin-top{
+	margin-top:12px;
+}
+.margin-left{
+	margin-left:0;
+}
+.height{
+   height:301px;
+}
+
+
+.danpin_he{
+	width: 100%;
+	height: 360px;
+	position: relative;
+}
+
+
+
+
+.dapei_kuang{
+	width: 100%;
+	height: 119px;
+	background: #f5f5f5;
+}
+.dapei-bufen{
+	width:1226px;
+	height:119px;
+	margin-top:36px;
+	background:#f5f5f5;
+	 margin:0 auto;
+	 border:1px solid #f5f5f5;
+	 /*overflow: hidden;*/
+}
+.dapei-biaoti{
+    height:60px;
+    margin-top:60px;
+    float:left;
+    /*margin-left:60px;*/
+}
+.dapei-biaoti-wenzi{
+    font-size:20px;
+   	color:#333333;
+	line-height:60px;
+}
+
+
+.dapei-Nav{
+	height:60px;
+	/*width: 300px;*/
+	overflow: hidden;
+	/*background: bue;*/
+    margin-top:60px;
+    float: right;
+    /*margin-right:60px;*/
+}
+.dapei-Nav-wenzi{
+	/*width: 70px;*/
+	overflow: hidden;
+	height: 60px;
+	/*background: pink;*/
+	font-size:16px;
+   	color:#333333;
+	line-height:60px;
+	float:right;
+	/*margin-right:30px;*/
+	padding: 0 15px;
+	box-sizing:border-box;
+	position: relative;
+}
+.zi1_c{
+	color: #333;
+}
+.zi2_c{
+	color: #333;
+}
+.zi3_c{
+	color: #333;
+}
+
+
+.remen{
+	margin-right:0;
+}
+.dapei-Nav-wenzi:hover{
+	color:#ff6700;
+	cursor:pointer;
+}
+
+
+
+
+
+
+
+
+
+
+.dapei{
+	width:1226px;
+	/*height:83px;*/
+	 background:#f5f5f5;
+	 margin:0 auto;
+	 border:1px solid white;
+	 overflow:hidden;
+	 
+}
+.daipeiArea{
+	position: relative;
+	height: 734px;
+}
+.xiala_list1{
+	width: 100%;
+	height: 750px;
+	/*background: red;*/
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.xiala_list2{
+	width: 100%;
+	height: 750px;
+	/*background: red;*/
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.xiala_list3{
+	width: 100%;
+	height: 750px;
+	/*background: red;*/
+	/*overflow: hidden;*/
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.picture{
+	display:block;
+	width:234px;
+	height:360px;
+}
+.xiahuaxian{
+	width: 70%;
+	height: 2px;
+
+	background: #ff6700;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto; 
+	top:45px;
+	
+	display: none;
+}
+.diyizhang{
+	margin-left:0;
+	
+}
+.shangbiankuang{
+   border:none;
+}
+
+.juli-shang{
+	margin-top:12px;
+}
+
+.danpin-tuijian-tupian ul{
+    width:100%;
+    height:173px;
+    background:#ffffff;
+    position:relative;
+}
+
+.danpin-tuijian-tupian ul li{
+	height:22px;
+	float:left;
+	margin-left:30px;
+	margin-top:44px;
+	/*background:black;*/
+}
+.wenzishuoming{
+	font-size:12px;
+	color:#336cb2;
+	line-height:22px;
+}
+
+
+.color{
+    color:#ff6700;
+}
+
+.top{
+	margin-top:15px;
+}
+.drawing{
+	position:absolute;
+	right:25px;
+	top:60px;
+}
+.drawing-change{
+	display:block;
+	width:75px;
+	height:30px;
+}
+.size{
+	font-size:20px;
+}
+
+.top1{
+	margin-top:4px;
+}
+.color1{
+	color:#757575;
+}
+.drawing1{
+	position:absolute;
+	right:30px;
+	top:45px;
+}
+.tu2{
+	margin-top:15px;
+}
+
+.beijingyanse{
+	background:#fafafa;
+}
+
+.weinituijian{
+	top:119px;
+	background:#f5f5f5;
+}
+
+
+
+
+
+.remenchanpin{
+	width:1226px;
+	height:auto;
+	background:#f5f5f5;
+	margin:0 auto;
+	border:1px solid:#fafafa;
+	overflow:hidden;
+}
+.remenchanpin-xinxi{
+	width:298px;
+	/*overflow: hidden;*/
+	background:#ffffff;
+	/*position: relative;*/
+}
+.remenchanpin-xinxi:hover{
+	box-shadow:0 1px 25px 0px #d7d4d4;
+    transform:translate(0,-5px); 
+    transition:all 1s;	
+}
+.remenchanpin-tupian{
+	width:298px;
+	overflow:hidden;
+}
+.tupinbianxiao{
+	display:block;
+	width:298px;
+	height:210px;
+}
+.remenchanpin-wenzi{
+	width:298px;
+	height:200px;
+	margin-top:30px;
+	background:#ffffff;
+}
+
+.wenzi-kuang{
+	width:240px;
+	height:auto;
+	margin:0 auto;
+	background:#ffffff;
+	overflow:hidden;
+	
+}
+.wenzi-info{
+	color:#b0b0b0;
+	font-size:13px;
+	line-height:22px;
+}
+
+
+.remenchanpin-pingjia{
+	margin-top:28px;
+}
+
+.pingjia-info{
+	color:#616161;
+	font-size:12px;
+	line-height:22px;
+}
+
+
+.remenchanping-yinxiang{
+	height:22px;
+	margin-top:24px;
+	float:left;
+}
+.yinxiang-name{
+    line-height:22px;
+    font-size:12px;
+    color:#b0b0b0;
+    float:left;
+}
+.shuxian{
+	width:1px;
+	height:12px;
+	background:#616161;
+	float:left;
+	margin-left:20px;
+	margin-top:5px;
+}
+.yinxiang-jiage{
+	line-height:22px;
+	font-size:12px;
+	color:#ff6700;
+	float:left;
+	margin-left:20px;
+}
+
+.juli{
+	float:left;
+	margin-left:0;
+}
+.juli1{
+	float:left;
+	margin-left:11px;
+}
+
+
+.wenzi-kuang{
+	width:240px;
+	height:auto;
+	margin:0 auto;
+	margin-top:30px;
+	/*overflow:hidden;*/
+}
+.neirong_con{
+	width: 100%;
+	height: 290px;
+	/*overflow: hidden;*/
+	background: #fff;
+	position: absolute;
+	top:0;
+	left: 0;
+	z-index: 1;
+}
+
+.neirong-wenzi-title{
+	width: 80%;
+	margin:0 auto;
+
+}
+.neirong-title-info{
+	line-height:22px;
+	font-size:12px;
+	color:#ff6700;
+	text-align:center;
+}
+.neirong_title_info2{
+	color: #1c8c16;
+}
+.neirong_title_info3{
+	color: #ce280d;
+}
+.neirong_title_info4{
+	color: #246feb;
+}
+.name-xiangxi{
+	line-height:24px;
+	font-size:18px;
+
+	text-align:center;
+}
+.name-xiangxi a{
+	color:#616161;
+}
+.qiangdiao-info{
+    line-height:24px;
+	font-size:12px;
+	
+	text-align:center;
+}
+.qiangdiao-info a{
+	color:#b0b0b0;
+}
+.neirong-jiage{
+    line-height:24px;
+	font-size:14px;
+	
+	text-align:center;
+}
+.neirong-jiage a{
+	color:#616161;
+}
+.neirong-shangbianju{
+	margin-top:20px;
+}
+.neirong-tupian{
+	width:240px;
+	height:auto;
+	margin:0 auto;
+	margin-top:18px;
+}
+.neirong-tupian-mingzi{
+	display:block;
+	margin:0 auto;
+}
+.neirong-yuanquan{
+	width:120px;
+	height:7px;
+	margin:0 auto;
+	margin-top:20px;
+	/*background: blue;*/
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	bottom: 50px;
+	/*background:red;*/
+}
+.chenkai{
+	height: 420px;
+	/*padding: 0 20px;
+	box-sizing:border-box;*/
+	/*overflow: hidden;*/
+}
+.shangbiankuang1{
+	border-top: 1px solid #ff8a00;
+}
+.shangbiankuang2{
+	border-top: 1px solid #1c8c16;
+}
+.shangbiankuang3{
+	border-top: 1px solid #ce280d;
+}
+.shangbiankuang4{
+	border-top: 1px solid #246feb;
+}
+
+.neirong-yuanuqan2{
+	width:6px;
+	height:6px;
+	border-radius:50%;
+	background:#ccc;
+	border:2px solid #fff;
+	float:left;
+	margin-left:20px;
+	margin-top: 2px;
+	cursor:pointer;
+}
+
+.neirong-Btn-zuo{
+	width:20px;
+	height:40px;
+	background:#d3cece;
+	position:absolute;
+    top:0;
+	bottom:0;
+	z-index: 100;
+	margin:auto;
+    cursor:pointer;
+}
+.neirong-Btn-zuo:hover{
+	width:20px;
+	background:#666666;
+}
+.neirong-Btn-jiantou{
+	color:#ffffff;
+	margin-left:5px;
+	margin-top:10px;		
+}
+
+.neirong-Btn-you{
+	width:20px;
+	height:40px;
+	background:#d3cece;
+	position:absolute;
+    top:0;
+	bottom:0;
+	z-index: 100;
+	margin:auto;
+	left: 278px;
+    cursor:pointer;
+}
+.dingwei{
+	position:relative;
+}
+
+.neirong_word{
+   width: 100%;
+   height: 260px;
+   position: relative;
+   overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.zuobianju{
+	float:left;
+	margin-left:0;
+}
+.zuobianju1{
+	float:left;
+	margin-left:11px;
+}
+
+.remenchanpin-xinxi ul{
+     margin:0 auto;
+     height:20px;
+     /*background:black;*/
+}
+
+.remenchanpin-xinxi ul li{
+	line-height:20px;
+	font-size:12px;
+	color:#333333;
+	margin:0 auto;
+	text-align:center;
+	margin-top:24px;
+}
+
+.location{
+	position:relative;
+}
+
+.yuanjiaojuxing{
+    width:30px;
+    height:20px;
+    background:#424242;
+    position:absolute;
+    left:20px;
+    top:140px;
+    border-radius:30%;
+    border:2px solid #ffffff;
+}
+.yuanjiaojuxing:hover{
+	background:#ff6700;
+	border:2px solid #ff6700;
+}
+.sanjiaoxing{
+	float:left;
+	margin-left:9px;
+	margin-top:4px;
+	display:block;
+	width:10px;
+	height:10px;
+}
+
+.shipin-neirong{
+	margin:0 auto;
+     height:20px;
+}
+.shipin-neirong-wenzi{
+	line-height:20px;
+	font-size:10px;
+	color:#616161;
+	margin:0 auto;
+	text-align:center;
+	margin-top:8px;
+}
+
+
+
+.dibu{
+	width:100%;
+	height:auto;
+	background:#ffffff;
+	margin-top:60px;
+	overflow:hidden;
+}
+
+.shouhoufuwu{
+	width:1226px;
+	height:80px;
+	/*background:yellow;*/
+	margin:0 auto;
+}
+.shouhoufuwu1{
+	height:80px;
+	float:left;
+	margin-left:50px;
+	/*background:blue;*/
+}
+.dibu-tupian1{
+	margin-top:25px;
+	float:left;
+	margin-left:0;
+}
+
+.shouhoufuwu ul{
+	height:26px;
+	float:left;
+	margin-left:8px;
+	margin-top:25px;
+}
+.shouhoufuwu ul li{
+	line-height:26px;
+	font-size:16px;
+	color:#616161;
+}
+
+
+
+
+.jiange{
+    width:100%;
+    height:60px;
+    background:#f5f5f5;
+}
+
+
+
+
+
+
+.dibu-shuxian{
+	width:1px;
+	height:20px;
+	margin-top:30px;
+	background:#e0e0e0;
+	float:left;
+	margin-left:50px;
+}
+
+.dibu-hengxian{
+	width:1226px;
+	height:1px;
+	background:#e0e0e0;
+	margin:0 auto;
+}
+
+.dibu-zhong{
+	width:1226px;
+	height:187px;
+	/*background:red;*/
+	margin:0 auto;
+	margin-top:50px;
+}
+.dibu-zhong ul{
+	float:left;
+	margin-left:100px;
+	/*width:75px;*/
+    height:187px;
+    /*background:green;*/
+}
+.dibu-zhong ul li{
+	height:22px;
+}
+.li-wenzi{
+	line-height:22px;
+	font-size:14px;
+	color:#424242;
+}
+.li-wenzi1{
+	margin-top:30px;
+	line-height:22px;
+	font-size:6px;
+	color:#757575;
+}
+.wenzi2{
+	margin-top:10px;
+}
+.dibu-zhong1{
+	float:left;
+	margin-left:0;
+	/*width:75px;*/
+    height:187px;
+   /* background:green;*/
+	
+}
+.dibu-zhong-shuxian{
+	width:1px;
+	height:116px;
+	background:#e0e0e0;
+	float:left;
+	margin-left:90px;
+
+}
+.kefu{
+	width:298px;
+	height:170px;
+	/*background:blue;*/
+	float:left;
+	
+}
+.kefu-wenzi{
+	height:28px;
+	/*background:red;*/
+	
+}
+.kefu-wenzi-juti{
+	line-height:28px;
+	font-size:22px;
+	color:#ff6700;
+	text-align:center;
+}
+.juti1{
+	font-size:12px;
+	color:#616161;
+}
+.juti2{
+	height:6px;
+}
+.juti3{
+	line-height:6px;
+}
+
+.kefu-kuang{
+	width:140px;
+	height:30px;
+	background:rgba(255,103,0,0);
+	margin:0 auto;
+	margin-top:30px;
+	border:1px solid #ff6709;
+	line-height:30px;
+    font-size:12px;
+    color:#ff6709;
+    text-align:center;
+	transition:all 0.3s linear;
+}
+
+.kefu-kuang>.kefu_icon{
+	line-height:30px;
+    font-size:12px;
+    color:#ff6700;
+    text-align:center;
+    float:left;
+	margin-left:12px;
+	margin-top: 0;
+}
+
+.dibu2{
+	width:1226px;
+	height:60px;
+	background:#ffffff;
+	margin:0 auto;
+}
+.dibu2-tupian{
+	float:left;
+	margin-left:0;
+}
+.dibu2-wenzi{
+	width:800px;
+	height:auto;
+	float:left;
+	margin-left:2px;
+	/*background:yellow;*/
+}
+.wenzi-xiangxi{
+	height:20px;
+	float:left;
+    margin-left:10px;
+
+}
+.wenzi-xiangxi1{
+	line-height:20px;
+	font-size:2px;
+	color:#757575;
+}
+.xiangxi-shuxian{
+    width:1px;
+	height:14px;
+	background:#b0b0b0;
+	float:left;
+	margin-left:4px;
+	margin-top:2px;
+}
+.xiangxi-liwai{
+	margin-left:0;
+}
+.xiangxi1-teshu{
+	font-size:2px;
+	color:#b6b0c0;
+}
+.dibulogo{
+	display:block;
+	width:80px;
+	height:30px;
+	float:left;
+	margin-top:10px;
+}
+.dibulogo-spacial{
+	margin-left:11px;
+}
+.tansuo{
+	width:100%;
+	height:80px;
+	background:#ffffff;
+}
+.dansuo-wenzi{
+	line-height:80px;
+	font-size:20px;
+	color:#b6b0c0;
+	text-align:center;
+}
